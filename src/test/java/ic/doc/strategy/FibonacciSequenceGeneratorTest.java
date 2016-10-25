@@ -8,9 +8,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
-public class FibonacciSequenceTest {
+public class FibonacciSequenceGeneratorTest {
 
-    final FibonacciSequence sequence = new FibonacciSequence();
+    private final Sequence sequence = new Sequence(new FibonacciSequenceGenerator());
 
     @Test
     public void definesFirstTwoTermsToBeOne() {

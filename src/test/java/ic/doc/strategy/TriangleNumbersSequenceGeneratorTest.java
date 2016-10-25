@@ -8,9 +8,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
-public class TriangleNumbersSequenceTest {
+public class TriangleNumbersSequenceGeneratorTest {
 
-    final TriangleNumbersSequence sequence = new TriangleNumbersSequence();
+    private final Sequence sequence = new Sequence(new TriangleNumbersSequenceGenerator());
 
     @Test
     public void definesFirstTermToBeOne() {
