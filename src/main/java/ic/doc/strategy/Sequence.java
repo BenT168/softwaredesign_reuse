@@ -4,10 +4,17 @@ import java.util.Iterator;
 
 public class Sequence implements Iterable<Integer> {
 
-    private final SequenceGenerator generator;
+    private final TermGenerator generator;
 
-    public Sequence(SequenceGenerator generator) {
+    public Sequence(TermGenerator generator) {
         this.generator = generator;
+    }
+
+    public int term(int i) {
+        if (i < 0) {
+            throw new IllegalArgumentException("Not defined for indices < 0");
+        }
+        return generator.positiveTerm(i);
     }
 
     public Iterator<Integer> iterator() {
@@ -25,7 +32,7 @@ public class Sequence implements Iterable<Integer> {
 
         @Override
         public Integer next() {
-            return generator.term(i++);
+            return generator.positiveTerm(i++);
         }
 
         @Override
@@ -34,8 +41,5 @@ public class Sequence implements Iterable<Integer> {
         }
     }
 
-    public int term(int i) {
-        return generator.term(i);
-    }
 
 }

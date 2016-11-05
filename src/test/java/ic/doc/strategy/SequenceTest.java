@@ -5,26 +5,17 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.fail;
 
-public class TriangleNumbersSequenceGeneratorTest {
+public class SequenceTest {
 
-    private final Sequence sequence = new Sequence(new TriangleNumbersSequenceGenerator());
+    final Sequence sequence = new Sequence(new TermGenerator() {
 
-    @Test
-    public void definesFirstTermToBeOne() {
-
-        assertThat(sequence.term(0), is(1));
-    }
-
-    @Test
-    public void definesSubsequentTermsToBeTheTriangleNumbers() {
-        assertThat(sequence.term(1), is(3));
-        assertThat(sequence.term(2), is(6));
-        assertThat(sequence.term(3), is(10));
-        assertThat(sequence.term(4), is(15));
-    }
+        @Override
+        public int positiveTerm(int i) {
+            return i;
+        }
+    });
 
     @Test
     public void isUndefinedForNegativeIndices() {
@@ -40,7 +31,7 @@ public class TriangleNumbersSequenceGeneratorTest {
     @Test
     public void canBeIteratedThrough() {
 
-        assertThat(sequence, hasItems(1, 3, 6, 10, 15));
+        assertThat(sequence, hasItems(1, 2, 3, 4, 5));
     }
 
 }

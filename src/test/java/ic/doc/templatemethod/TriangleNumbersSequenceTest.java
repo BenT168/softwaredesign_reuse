@@ -2,11 +2,9 @@ package ic.doc.templatemethod;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.fail;
 
 public class TriangleNumbersSequenceTest {
 
@@ -26,16 +24,6 @@ public class TriangleNumbersSequenceTest {
         assertThat(sequence.term(4), is(15));
     }
 
-    @Test
-    public void isUndefinedForNegativeIndices() {
-
-        try {
-            sequence.term(-1);
-            fail("should have thrown exception");
-        } catch (IllegalArgumentException e) {
-            assertThat(e.getMessage(), containsString("Not defined for indices < 0"));
-        }
-    }
 
     @Test
     public void canBeIteratedThrough() {

@@ -2,8 +2,16 @@ package ic.doc.templatemethod;
 
 import java.util.Iterator;
 
-public abstract class Sequence {
-    public abstract int term(int i);
+public abstract class Sequence implements Iterable<Integer> {
+
+    public int term(int i) {
+        if (i < 0) {
+            throw new IllegalArgumentException("Not defined for indices < 0");
+        }
+        return positiveTerm(i);
+    }
+
+    protected abstract int positiveTerm(int i);
 
     public Iterator<Integer> iterator() {
         return new SequenceIterator();

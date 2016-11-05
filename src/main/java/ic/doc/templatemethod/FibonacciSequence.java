@@ -1,12 +1,9 @@
 package ic.doc.templatemethod;
 
-public class FibonacciSequence extends Sequence implements Iterable<Integer> {
+public class FibonacciSequence extends Sequence {
 
     @Override
-    public int term(int i) {
-        if (i < 0) {
-            throw new IllegalArgumentException("Not defined for indices < 0");
-        }
+    protected int positiveTerm(int i) {
         if (i < 2) {
             return 1;
         }
